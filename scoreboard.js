@@ -48,6 +48,21 @@ class Scoreboard {
     }
 
     createBoard() {
+        const $playerNamesContainer = $('<div>')
+            .attr('id', 'player-names-container');
+        const $firstPlayerName = $('<p>')
+            .attr('id', 'first-player-name')
+            .addClass('player-name')
+            .text('Player 1');
+        const $secondPlayerName = $('<p>')
+            .attr('id', 'second-player-name')
+            .addClass('player-name')
+            .text('Player 2');
+        $('.player-name').empty();
+        $($playerNamesContainer).append($firstPlayerName);
+        $($playerNamesContainer).append($secondPlayerName);
+        $('h1').append($playerNamesContainer);
+
         const $board = $(this.selectorA);
         $board.empty();
         const that = this;
@@ -207,9 +222,10 @@ class Scoreboard {
             console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
             console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
         });
-
         $('body').on('click', '#reset', function(){
-            that.reset();
+            if (confirm('Reset the game?')) {
+                that.reset();
+            }
         });
     }
 
@@ -220,7 +236,7 @@ class Scoreboard {
         console.log('Player 2 Hits: ', that.secondPlayerHits);
 
         if (
-            that.firstPlayerScore > that.secondPlayerScore &&
+            that.firstPlayerScore >= that.secondPlayerScore &&
             that.firstPlayerHits[20] === 3 &&
             that.firstPlayerHits[19] === 3 &&
             that.firstPlayerHits[18] === 3 &&
@@ -229,9 +245,11 @@ class Scoreboard {
             that.firstPlayerHits[15] === 3 &&
             that.firstPlayerHits[14] === 3
         ) {
-            return alert('Player 1 has won!');
+             if (confirm('Player 1 has won! Reset the game?')) {
+                 return that.reset();
+             }
         } else if (
-            that.secondPlayerScore > that.firstPlayerScore &&
+            that.secondPlayerScore >= that.firstPlayerScore &&
             that.secondPlayerHits[20] === 3 &&
             that.secondPlayerHits[19] === 3 &&
             that.secondPlayerHits[18] === 3 &&
@@ -240,7 +258,9 @@ class Scoreboard {
             that.secondPlayerHits[15] === 3 &&
             that.secondPlayerHits[14] === 3
         ) {
-            return alert('Player 2 Wins');
+            if (confirm('Player 2 has won! Reset the game?')) {
+                return that.reset();
+            }
         }
     }
 
@@ -284,6 +304,7 @@ class Scoreboard {
             15: 0,
             14: 0
         };
+        console.clear();
         this.createBoard();
     }
 }
