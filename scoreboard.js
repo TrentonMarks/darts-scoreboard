@@ -123,6 +123,13 @@ class Scoreboard {
                           .append($secondPlayerScoreContainer);
         $($firstPlayerScoreContainer).append($firstPlayerScoreDisplay);
         $($secondPlayerScoreContainer).append($secondPlayerScoreDisplay);
+
+        // RESET BUTTON
+        const $resetButton = $('<a>')
+            .attr('id', 'reset')
+            .text('RESET');
+        $('#reset').remove();
+        $('body').append($resetButton);
     }
 
     setupEventListeners() {
@@ -200,6 +207,10 @@ class Scoreboard {
             console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
             console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
         });
+
+        $('body').on('click', '#reset', function(){
+            that.reset();
+        });
     }
 
     checkIfWin() {
@@ -233,7 +244,46 @@ class Scoreboard {
         }
     }
 
-    restart() {
-        
+    reset() {
+        const that = this;
+        that.firstPlayerScore = 0;
+        that.secondPlayerScore = 0;
+        that.firstPlayerHits = {
+            20: 0,
+            19: 0,
+            18: 0,
+            17: 0,
+            16: 0,
+            15: 0,
+            14: 0
+        };
+        that.secondPlayerHits = {
+            20: 0,
+            19: 0,
+            18: 0,
+            17: 0,
+            16: 0,
+            15: 0,
+            14: 0
+        };
+        that.firstPlayerScorePerNum = {
+            20: 0,
+            19: 0,
+            18: 0,
+            17: 0,
+            16: 0,
+            15: 0,
+            14: 0
+        };
+        that.secondPlayerScorePerNum = {
+            20: 0,
+            19: 0,
+            18: 0,
+            17: 0,
+            16: 0,
+            15: 0,
+            14: 0
+        };
+        this.createBoard();
     }
 }

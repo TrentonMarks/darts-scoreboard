@@ -140,3 +140,17 @@ body {
     font-weight: bolder;
     font-size: 20px
 }
+
+#reset {
+    color: white;
+    text-decoration: none;
+}
+
+#reset:hover {
+    color: darkgray;
+    cursor: pointer;
+}
+
+#reset:active {
+    color: gray;
+}
