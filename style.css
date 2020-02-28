@@ -128,9 +128,15 @@ body {
 }
 
 #first-player-score {
-    margin-left: 9%;
+    margin-left: 7.75%;
 }
 
 #second-player-score {
-    margin-right: 9%;
+    margin-right: 7.75%;
+}
+
+.player-score-display {
+    margin: 3px;
+    font-weight: bolder;
+    font-size: 20px
 }

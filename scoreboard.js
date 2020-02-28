@@ -112,9 +112,11 @@ class Scoreboard {
             .attr('id', 'second-player-score');
         const $firstPlayerScoreDisplay = $('<p>')
             .attr('id', 'first-player-score-display')
+            .addClass('player-score-display')
             .text(that.firstPlayerScore);
         const $secondPlayerScoreDisplay = $('<p>')
             .attr('id', 'second-player-score-display')
+            .addClass('player-score-display')
             .text(that.secondPlayerScore);
         $('body').append($scoreContainer);
         $($scoreContainer).append($firstPlayerScoreContainer)
@@ -229,5 +231,9 @@ class Scoreboard {
         ) {
             return alert('Player 2 Wins');
         }
+    }
+
+    restart() {
+        
     }
 }
