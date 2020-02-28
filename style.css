@@ -7,7 +7,7 @@ body {
 }
 
 #scoreboard {
-    height: 90vh;
+    height: 80vh;
     width: 100%;
     border-top: 3px solid white;
     border-bottom: 3px solid white;
@@ -29,17 +29,35 @@ body {
 }
 
 .remove-score {
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.show-minus {
     height: 10px;
     width: 35px;
     background-color: darkgray;
 }
 
-.remove-score:hover {
+.show-minus:hover {
     background-color: gray;
+    cursor: pointer;
 }
 
-.remove-score:active {
+.show-minus:active {
     background-color: rgb(100, 100, 100);
+}
+
+.player-score-per-num-display {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bolder;
+    user-select: none;
+}
+
+.player-score-per-num-display:hover {
+    cursor: pointer;
 }
 
 .add-score {
@@ -48,6 +66,11 @@ body {
   height: 50px;
   position: relative;
 }
+
+.add-score:hover {
+    cursor: pointer;
+}
+
 .add-score::after {
   content: " ";
   position: absolute;
@@ -75,10 +98,12 @@ body {
 
 .add-score:hover::after {
     background-color: gray;
+    cursor: pointer;
 }
 
 .add-score:hover::before {
     background-color: gray;
+    cursor: pointer;
 }
 
 .add-score:active::after {
@@ -94,4 +119,18 @@ body {
     font-weight: bolder;
     display: block;
     margin: 0;
+}
+
+#score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#first-player-score {
+    margin-left: 9%;
+}
+
+#second-player-score {
+    margin-right: 9%;
 }

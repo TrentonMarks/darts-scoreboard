@@ -1,6 +1,6 @@
 $(()=>{
 
-    const scoreboard = new Scoreboard('#scoreboard');
+    const scoreboard = new Scoreboard('#scoreboard', '#score-container');
 
 
 
