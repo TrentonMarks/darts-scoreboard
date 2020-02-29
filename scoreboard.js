@@ -188,9 +188,9 @@ class Scoreboard {
                                 .addClass('inner-circle')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
-                            $col.append($innerCircle);
-                            $innerCircle.append($backwardSlash);
-                            $backwardSlash.append($forwardSlash);
+                                $col.append($backwardSlash);
+                                $backwardSlash.append($forwardSlash);
+                                $forwardSlash.append($innerCircle);
                         }
                     }
                 } else if (j >= 15) {
