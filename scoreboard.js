@@ -12,7 +12,7 @@ class Scoreboard {
             20: 0,
             19: 0,
             18: 0,
-            17: 3, // change back to 0!!!
+            17: 0,
             16: 0,
             15: 0,
             14: 0
@@ -111,39 +111,42 @@ class Scoreboard {
                                 .attr('data-row', j)
                             $col.append($addScore);
                         } else if (this.firstPlayerHits[j] === 1) {
-                            const $forwardSlash = $('<div>')
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
                                 .addClass('add-score')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $forwardSlash = $('<div>')
                                 .addClass('forward-slashA')
-                                .attr('data-col', i)
-                                .attr('data-row', j);
-                            $col.append($forwardSlash);
+                            $col.append($shapeContainer);
+                            $shapeContainer.append($forwardSlash);
                         } else if (this.firstPlayerHits[j] === 2) {
-                            const $forwardSlash = $('<div>')
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
                                 .addClass('add-score')
-                                .addClass('forward-slashB')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
+                            const $forwardSlash = $('<div>')
+                                .addClass('forward-slashB');
                             const $backwardSlash = $('<div>')
-                                .addClass('backward-slash')
-                                .attr('data-col', i)
-                                .attr('data-row', j)
-                            $col.append($backwardSlash);
+                                .addClass('backward-slash');
+                            $col.append($shapeContainer);
+                            $shapeContainer.append($backwardSlash);
                             $backwardSlash.append($forwardSlash);
                         } else if (this.firstPlayerHits[j] === 3) {
-                            const $forwardSlash = $('<div>')
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
                                 .addClass('add-score')
-                                .addClass('forward-slashB')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
+                            const $forwardSlash = $('<div>')
+                                .addClass('forward-slashB')
                             const $backwardSlash = $('<div>')
                                 .addClass('backward-slash')
-                                .attr('data-col', i)
-                                .attr('data-row', j);
                             const $innerCircle = $('<div>')
                                 .addClass('inner-circle')
-                                .attr('data-col', i)
-                                .attr('data-row', j);
-                                $col.append($backwardSlash);
+                                $col.append($shapeContainer);
+                                $shapeContainer.append($backwardSlash);
                                 $backwardSlash.append($forwardSlash);
                                 $forwardSlash.append($innerCircle);
                         }
@@ -156,39 +159,42 @@ class Scoreboard {
                                 .attr('data-row', j)
                             $col.append($addScore);
                         } else if (this.secondPlayerHits[j] === 1) {
-                            const $forwardSlash = $('<div>')
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
                                 .addClass('add-score')
-                                .addClass('forward-slashA')
-                                .attr('data-col', i)
-                                .attr('data-row', j)
-                            $col.append($forwardSlash);
-                        } else if (this.secondPlayerHits[j] === 2) {
-                            const $forwardSlash = $('<div>')
-                                .addClass('add-score')
-                                .addClass('forward-slashB')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
-                            const $backwardSlash = $('<div>')
-                                .addClass('backward-slash')
+                            const $forwardSlash = $('<div>')
+                                .addClass('forward-slashA');
+                            $col.append($shapeContainer);
+                            $shapeContainer.append($forwardSlash);
+                        } else if (this.secondPlayerHits[j] === 2) {
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
+                                .addClass('add-score')
                                 .attr('data-col', i)
-                                .attr('data-row', j)
-                            $col.append($backwardSlash);
+                                .attr('data-row', j);
+                            const $forwardSlash = $('<div>')
+                                .addClass('forward-slashB');
+                            const $backwardSlash = $('<div>')
+                                .addClass('backward-slash');
+                            $col.append($shapeContainer);
+                            $shapeContainer.append($backwardSlash);
                             $backwardSlash.append($forwardSlash);
                         } else if (this.secondPlayerHits[j] === 3) {
-                            const $forwardSlash = $('<div>')
+                            const $shapeContainer = $('<div>')
+                                .addClass('shape-container')
                                 .addClass('add-score')
-                                .addClass('forward-slashB')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
+                            const $forwardSlash = $('<div>')
+                                .addClass('forward-slashB');
                             const $backwardSlash = $('<div>')
-                                .addClass('backward-slash')
-                                .attr('data-col', i)
-                                .attr('data-row', j);
+                                .addClass('backward-slash');
                             const $innerCircle = $('<div>')
-                                .addClass('inner-circle')
-                                .attr('data-col', i)
-                                .attr('data-row', j);
-                                $col.append($backwardSlash);
+                                .addClass('inner-circle');
+                                $col.append($shapeContainer);
+                                $shapeContainer.append($backwardSlash);
                                 $backwardSlash.append($forwardSlash);
                                 $forwardSlash.append($innerCircle);
                         }
@@ -266,10 +272,10 @@ class Scoreboard {
             }
             that.checkIfWin();
             that.createBoard();
-            console.log('Player 1 Score: ' + that.firstPlayerScore);
-            console.log('Player 2 Score: ' + that.secondPlayerScore);
-            console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
-            console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
+            // console.log('Player 1 Score: ' + that.firstPlayerScore);
+            // console.log('Player 2 Score: ' + that.secondPlayerScore);
+            // console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
+            // console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
         });
 
         // CLICK LISTENER: SUBTRACT SCORE
@@ -305,10 +311,10 @@ class Scoreboard {
             }
             that.createBoard();
 
-            console.clear();
-            console.log('Player 2 Score: ' + that.secondPlayerScore);
-            console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
-            console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
+            // console.clear();
+            // console.log('Player 2 Score: ' + that.secondPlayerScore);
+            // console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
+            // console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
         });
 
         // CLICK LISTENER: RESET BUTTON
@@ -320,10 +326,10 @@ class Scoreboard {
     }
 
     checkIfWin() {
-        console.clear();
         const that = this;
-        console.log('Player 1 Hits: ', that.firstPlayerHits);
-        console.log('Player 2 Hits: ', that.secondPlayerHits);
+        // console.clear();
+        // console.log('Player 1 Hits: ', that.firstPlayerHits);
+        // console.log('Player 2 Hits: ', that.secondPlayerHits);
 
         if (
             that.firstPlayerScore >= that.secondPlayerScore &&
