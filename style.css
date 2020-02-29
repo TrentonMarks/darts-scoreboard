@@ -227,6 +227,7 @@ input {
   border-color: white;
   background-color: none;
   border-width: thick;
-  margin-top: none;
-  margin-bottom: none;
+  position: relative;
+  right: 17.5px;
+  top: 5px;
 }

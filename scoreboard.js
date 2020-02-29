@@ -12,7 +12,7 @@ class Scoreboard {
             20: 0,
             19: 0,
             18: 0,
-            17: 0,
+            17: 3, // change back to 0!!!
             16: 0,
             15: 0,
             14: 0
@@ -143,9 +143,9 @@ class Scoreboard {
                                 .addClass('inner-circle')
                                 .attr('data-col', i)
                                 .attr('data-row', j);
-                                $col.append($innerCircle);
-                                $innerCircle.append($backwardSlash);
+                                $col.append($backwardSlash);
                                 $backwardSlash.append($forwardSlash);
+                                $forwardSlash.append($innerCircle);
                         }
                     } else if (i === 3) {
                         if (this.secondPlayerHits[j] === 0) {
