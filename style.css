@@ -183,10 +183,8 @@ h1 {
 .player-name {
     font-size: 20px;
     margin: 0 11.5% 0 15%;
-}
-
-input {
     outline-width: 0;
+    width: 175px;
 }
 
 .forward-slashA { /* css for forward slash (use for single slash) */

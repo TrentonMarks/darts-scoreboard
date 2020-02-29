@@ -50,22 +50,6 @@ class Scoreboard {
     }
 
     createBoard() {
-        const $playerNamesContainer = $('<div>')
-            .attr('id', 'player-names-container');
-        const $firstPlayerName = $('<input>')
-            .attr('type', 'text')
-            .attr('value', 'Player 1')
-            .attr('id', 'first-player-name')
-            .addClass('player-name');
-            const $secondPlayerName = $('<input>')
-                .attr('type', 'text')
-                .attr('value', 'Player 2')
-                .attr('id', 'second-player-name')
-                .addClass('player-name');
-        $('.player-name').remove();
-        $($playerNamesContainer).append($firstPlayerName);
-        $($playerNamesContainer).append($secondPlayerName);
-        $('h1').append($playerNamesContainer);
         const $board = $(this.selectorA);
         $board.empty();
         const that = this;
