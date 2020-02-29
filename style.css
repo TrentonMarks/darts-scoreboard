@@ -67,18 +67,18 @@ h1 {
     cursor: pointer;
 }
 
-.add-score {
+.plus-sign {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   position: relative;
 }
 
-.add-score:hover {
+.plus-sign:hover {
     cursor: pointer;
 }
 
-.add-score::after {
+.plus-sign::after {
   content: " ";
   position: absolute;
   display: block;
@@ -90,7 +90,7 @@ h1 {
   right: 5px;
   z-index: 9;
 }
-.add-score::before {
+.plus-sign::before {
   content: " ";
   position: absolute;
   display: block;
@@ -103,21 +103,21 @@ h1 {
   z-index: 9;
 }
 
-.add-score:hover::after {
+.plus-sign:hover::after {
     background-color: gray;
     cursor: pointer;
 }
 
-.add-score:hover::before {
+.plus-sign:hover::before {
     background-color: gray;
     cursor: pointer;
 }
 
-.add-score:active::after {
+.plus-sign:active::after {
     background-color: rgb(100, 100, 100);
 }
 
-.add-score:active::before {
+.plus-sign:active::before {
     background-color: rgb(100, 100, 100);
 }
 
@@ -168,7 +168,65 @@ h1 {
     justify-content: space-between;
 }
 
+#first-player-name {
+    background: 0;
+    border: 0;
+    color: white;
+}
+
+#second-player-name {
+    background: 0;
+    border: 0;
+    color: white;
+}
+
 .player-name {
     font-size: 20px;
-    margin: 0 15% 0 15%;
+    margin: 0 11.5% 0 15%;
+}
+
+input {
+    outline-width: 0;
+}
+
+.forward-slashA { /* css for forward slash (use for single slash) */
+    background-color: white;
+    height: 50px;
+    width: 5.5px;
+    transform: rotate(45deg);
+    border-radius: 20px;
+    margin-top: none;
+    margin-bottom: none;
+}
+
+.forward-slashB { /* css for forward slash (use to create x-shape) */
+    background-color: white;
+    height: 50px;
+    width: 5.5px;
+    transform: rotate(90deg);
+    border-radius: 20px;
+    margin-top: none;
+    margin-bottom: none;
+    }
+
+.backward-slash { /* css for backward slash */
+    margin-top: none;
+    margin-bottom: none;
+    background-color: white;
+    height: 50px;
+    width: 5.5px;
+    transform: rotate(-45deg);
+    border-radius: 20px;
+    }
+
+.inner-circle { /* css for circle */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  background-color: none;
+  border-width: thick;
+  margin-top: none;
+  margin-bottom: none;
 }

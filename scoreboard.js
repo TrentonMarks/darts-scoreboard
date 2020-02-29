@@ -2,6 +2,8 @@ class Scoreboard {
     constructor(selectorA, selectorB) {
         this.selectorA = selectorA;
         this.selectorB = selectorB;
+        this.firstPlayerName = 'Player 1';
+        this.secondPlayerName = 'Player 2';
         this.rows = 7;
         this.cols = 5;
         this.firstPlayerScore = 0;
@@ -50,19 +52,20 @@ class Scoreboard {
     createBoard() {
         const $playerNamesContainer = $('<div>')
             .attr('id', 'player-names-container');
-        const $firstPlayerName = $('<p>')
+        const $firstPlayerName = $('<input>')
+            .attr('type', 'text')
+            .attr('value', 'Player 1')
             .attr('id', 'first-player-name')
-            .addClass('player-name')
-            .text('Player 1');
-        const $secondPlayerName = $('<p>')
-            .attr('id', 'second-player-name')
-            .addClass('player-name')
-            .text('Player 2');
-        $('.player-name').empty();
+            .addClass('player-name');
+            const $secondPlayerName = $('<input>')
+                .attr('type', 'text')
+                .attr('value', 'Player 2')
+                .attr('id', 'second-player-name')
+                .addClass('player-name');
+        $('.player-name').remove();
         $($playerNamesContainer).append($firstPlayerName);
         $($playerNamesContainer).append($secondPlayerName);
         $('h1').append($playerNamesContainer);
-
         const $board = $(this.selectorA);
         $board.empty();
         const that = this;
@@ -70,7 +73,6 @@ class Scoreboard {
             const $col = $('<div>')
                 .addClass('col')
                 .attr('id', 'col-' + i);
-
             for (let j = 20; j >= this.rows + 7; j--) {
                 if (i === 0 || i === 4) {
                     let $removeScore = $('<div>')
@@ -100,11 +102,97 @@ class Scoreboard {
                     }
                     $col.append($removeScore);
                 } else if (i === 1 || i === 3) {
-                    const $addScore = $('<div>')
-                        .addClass('add-score')
-                        .attr('data-col', i)
-                        .attr('data-row', j)
-                    $col.append($addScore);
+                    if (i === 1) {
+                        if (this.firstPlayerHits[j] === 0) {
+                            const $addScore = $('<div>')
+                                .addClass('add-score')
+                                .addClass('plus-sign')
+                                .attr('data-col', i)
+                                .attr('data-row', j)
+                            $col.append($addScore);
+                        } else if (this.firstPlayerHits[j] === 1) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashA')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            $col.append($forwardSlash);
+                        } else if (this.firstPlayerHits[j] === 2) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashB')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $backwardSlash = $('<div>')
+                                .addClass('backward-slash')
+                                .attr('data-col', i)
+                                .attr('data-row', j)
+                            $col.append($backwardSlash);
+                            $backwardSlash.append($forwardSlash);
+                        } else if (this.firstPlayerHits[j] === 3) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashB')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $backwardSlash = $('<div>')
+                                .addClass('backward-slash')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $innerCircle = $('<div>')
+                                .addClass('inner-circle')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                                $col.append($innerCircle);
+                                $innerCircle.append($backwardSlash);
+                                $backwardSlash.append($forwardSlash);
+                        }
+                    } else if (i === 3) {
+                        if (this.secondPlayerHits[j] === 0) {
+                            const $addScore = $('<div>')
+                                .addClass('add-score')
+                                .addClass('plus-sign')
+                                .attr('data-col', i)
+                                .attr('data-row', j)
+                            $col.append($addScore);
+                        } else if (this.secondPlayerHits[j] === 1) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashA')
+                                .attr('data-col', i)
+                                .attr('data-row', j)
+                            $col.append($forwardSlash);
+                        } else if (this.secondPlayerHits[j] === 2) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashB')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $backwardSlash = $('<div>')
+                                .addClass('backward-slash')
+                                .attr('data-col', i)
+                                .attr('data-row', j)
+                            $col.append($backwardSlash);
+                            $backwardSlash.append($forwardSlash);
+                        } else if (this.secondPlayerHits[j] === 3) {
+                            const $forwardSlash = $('<div>')
+                                .addClass('add-score')
+                                .addClass('forward-slashB')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $backwardSlash = $('<div>')
+                                .addClass('backward-slash')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            const $innerCircle = $('<div>')
+                                .addClass('inner-circle')
+                                .attr('data-col', i)
+                                .attr('data-row', j);
+                            $col.append($innerCircle);
+                            $innerCircle.append($backwardSlash);
+                            $backwardSlash.append($forwardSlash);
+                        }
+                    }
                 } else if (j >= 15) {
                     const $score = function() {
                         return $(`<p>${j}</p>`)
@@ -222,6 +310,8 @@ class Scoreboard {
             console.log('Player 1 Scores Per Num: ', that.firstPlayerScorePerNum);
             console.log('Player 2 Scores Per Num: ', that.secondPlayerScorePerNum);
         });
+
+        // CLICK LISTENER: RESET BUTTON
         $('body').on('click', '#reset', function(){
             if (confirm('Reset the game?')) {
                 that.reset();
